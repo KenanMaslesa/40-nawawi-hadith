@@ -4,7 +4,7 @@
 
     <div class="hadith-content">
       <ng-container *ngFor="let hadith of hadithService.hadiths">
-        <div *ngIf=" hadith.id == hadithService.activeHadithId" class="hadith">
+        <div *ngIf=" hadith.id == hadithService.activeHadithId" class="hadith" data-aos="fade-up" data-aos-once="true">
 
           <div class="title">
             <h1 *ngIf="languageService.isBosnian">{{hadith.id}}. {{hadith.bosnianTitle}}</h1>
@@ -36,15 +36,39 @@
           <p class="translation" *ngIf="languageService.isEnglish">{{hadith.english_hadith}}</p>
           <p class="translation" *ngIf="languageService.isBosnian">{{hadith.bosnian_hadith}}</p>
 
+          <div class="arrows">
+            <i _ngcontent-c6="" class="ni ni-bold-left" (click)="hadithService.previousHadith()"></i>
+            <span>{{hadithService.activeHadithId}}</span>
+            <i _ngcontent-c6="" class="ni ni-bold-right" (click)="hadithService.nextHadith()"></i>
+          </div>
+
           <audio controls #audio (timeupdate)="updateCurrentTime(audio)">
             <source src="{{hadith.audio}}">
           </audio>
+        </div>
+
+        <div *ngIf="hadith.id == hadithService.activeHadithId" class="video-wrapper">
+
+          <ngb-carousel *ngIf="hadith.video.english && languageService.isEnglish" class="video-slider">
+            <ng-template ngbSlide *ngFor="let slide of hadith.video.bosnian">
+              <iframe [src]="slide.link" width="100%" height="578" id="trailer" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </ng-template>
+          </ngb-carousel>
+
+          <ngb-carousel *ngIf="hadith.id == hadithService.activeHadithId" class="video-slider">
+            <ng-template ngbSlide *ngFor="let slide of hadith.video.bosnian">
+              <iframe [src]="slide.link" width="100%" height="578" id="trailer" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </ng-template>
+          </ngb-carousel>
         </div>
 
       </ng-container>
     </div>
   </div>
 </main>
-
-
-

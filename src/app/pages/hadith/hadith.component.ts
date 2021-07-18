@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { HadithService } from 'src/app/services/hadith.service';
 import { LanguageService } from 'src/app/services/language.service';
 
@@ -15,10 +14,12 @@ export class HadithComponent implements OnInit {
   english = true;
   bosnian = true;
   activeHadith: any;
+  trustedUrl: any;
 
-  constructor(public hadithService: HadithService, public languageService: LanguageService, public sanitizer: DomSanitizer,) { }
+  constructor(public hadithService: HadithService, public languageService: LanguageService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
   }
 
   setAudio(audio, startSecond, endSecond){

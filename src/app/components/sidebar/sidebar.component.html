@@ -21,7 +21,7 @@
             </a>
           </div>
           <div class="col-6 collapse-close">
-            <button type="button" class="navbar-toggler" (click)="isCollapsed=!isCollapsed">
+            <button type="button" class="navbar-toggler" style="padding: 0;"  (click)="isCollapsed=!isCollapsed">
               <span></span>
               <span></span>
             </button>
@@ -43,9 +43,9 @@
             </div>
           </div>
         </form>
-        <li *ngFor="let hadith of hadithService.hadiths" (click)="hadithService.activeHadithId = hadith.id"
+        <li *ngFor="let hadith of hadithService.searchData" (click)="hadithService.activeHadithId = hadith.id"
           class="nav-item">
-          <a routerLinkActive="active" class="nav-link">
+          <a routerLinkActive="active" class="nav-link" [class.active]="hadithService.activeHadithId == hadith.id">
             <i>{{hadith.id}}.</i>
             <span *ngIf="languageService.isBosnian">{{hadith.bosnianTitle}}</span>
             <span *ngIf="languageService.isEnglish">{{hadith.englishTitle}}</span>

@@ -1,0 +1,30 @@
+#sidenav-main{
+  background-color: #1f1f2d !important;
+
+  .navbar-nav{
+    .nav-link{
+      color: white !important;
+      cursor: pointer;
+      transition: all 0.5s;
+
+      &.active{
+        i, span{
+          color: #5e72e4;
+        }
+      }
+
+      &:hover{
+        color: #5e72e4;
+      }
+    }
+  } 
+
+  .navbar-toggler {
+    background-color: #ffffff1a !important;
+    padding: 0 5px;
+
+    span:not(.navbar-toggler-icon){
+      background-color: white;
+    }
+}
+}
