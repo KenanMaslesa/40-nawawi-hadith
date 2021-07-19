@@ -16,7 +16,10 @@
             <i class="ni ni-button-pause" (click)="stopAudio(audio)" *ngIf="!audio.paused"></i>
           </div>
 
-
+          <audio controls #audio (timeupdate)="updateCurrentTime(audio)">
+            <source src="{{hadith.audio}}">
+          </audio>
+          
           <div class="arabic">
 
             <h1 class="sentence" #sentence
@@ -26,7 +29,7 @@
               *ngFor="let sentence of hadith.arabic_hadith.sentences">
               {{sentence.arabic_text}}
 
-              <ng-template #popContent class="template">
+              <ng-template #popContent class="template" >
                 <p *ngIf="languageService.isBosnian">{{sentence.bosnian_text}}</p>
                 <p *ngIf="languageService.isEnglish">{{sentence.english_text}}</p>
               </ng-template>
@@ -41,9 +44,7 @@
             <button class="btn d-flex" (click)="hadithService.nextHadith()">Sljedeci hadis<i class="ni ni-bold-right"></i></button>
           </div>
 
-          <audio controls #audio (timeupdate)="updateCurrentTime(audio)">
-            <source src="{{hadith.audio}}">
-          </audio>
+         
         </div>
       </ng-container>
     </div>
