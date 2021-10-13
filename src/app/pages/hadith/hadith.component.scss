@@ -2,8 +2,22 @@ main {
   padding: 20px 50px 0px;
   height: 100%;
   overflow-y: auto;
-  
-  @media(max-width: 768px){
+  background-image: url(/assets/img/brand/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+
+  &::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(255,255,255,.92);
+  }
+
+  @media (max-width: 768px) {
     padding: 20px 0px 0px 0px;
   }
 
@@ -42,13 +56,14 @@ main {
         width: 100%;
       }
 
-      .arrows, .btn{
+      .arrows,
+      .btn {
         display: flex;
         justify-content: center;
         align-items: center;
       }
 
-      .arrows{
+      .arrows {
         margin-top: 50px;
       }
 
@@ -105,6 +120,7 @@ main {
         .arabic {
           margin-bottom: 30px;
           direction: rtl;
+          font-family: "noorehidayatregular";
         }
       }
     }
