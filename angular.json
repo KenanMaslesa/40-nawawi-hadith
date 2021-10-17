@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "argon-dashboard-angular": {
+    "40nawawihadith": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -142,7 +142,7 @@
       }
     }
   },
-  "defaultProject": "argon-dashboard-angular",
+  "defaultProject": "40nawawihadith",
   "schematics": {
     "@schematics/angular:component": {
       "styleext": "scss"
