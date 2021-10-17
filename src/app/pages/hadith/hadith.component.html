@@ -1,15 +1,18 @@
 <main>
-
+  <select class="language-dropdown" #select (change)="languageService.changeCurrentLanguage(select.value)">
+    <option value="bosanski">bosanski jezik</option>
+    <option value="english">english</option>
+  </select>
   <div class="hadith-wrapper">
 
     <div class="hadith-content">
       <ng-container *ngFor="let hadith of hadithService.hadiths">
-        <div *ngIf=" hadith.id == hadithService.activeHadithId" class="hadith">
+        <div *ngIf=" hadith.number == hadithService.activeHadithId" class="hadith">
 
           <div class="title arrows">
             <button class="btn d-flex" (click)="hadithService.previousHadith()"><i class="ni ni-bold-left"></i></button>
-            <h1 *ngIf="languageService.isBosnian">{{hadith.id}}. {{hadith.bosnianTitle}}</h1>
-            <h1 *ngIf="languageService.isEnglish">{{hadith.id}}. {{hadith.englishTitle}}</h1>
+            <h1 *ngIf="languageService.isBosnian">{{hadith.number}}. {{hadith.bosnianTitle}}</h1>
+            <h1 *ngIf="languageService.isEnglish">{{hadith.number}}. {{hadith.englishTitle}}</h1>
             <button class="btn d-flex" (click)="hadithService.nextHadith()"><i class="ni ni-bold-right"></i></button>
           </div>
 
@@ -19,7 +22,7 @@
           </div>
 
           <audio controls #audio (timeupdate)="updateCurrentTime(audio)">
-            <source src="{{hadith.audio}}">
+            <source src="{{audioHost}}{{hadith.audio}}">
           </audio>
           
           <div class="arabic">
@@ -42,8 +45,8 @@
           <p class="translation" *ngIf="languageService.isBosnian">{{hadith.bosnian_hadith}}</p>
 
           <div class="arrows">
-            <button class="btn d-flex" (click)="hadithService.previousHadith()"><i class="ni ni-bold-left"></i>Prethodni hadis</button>
-            <button class="btn d-flex" (click)="hadithService.nextHadith()">Sljedeci hadis<i class="ni ni-bold-right"></i></button>
+            <button class="btn d-flex" (click)="hadithService.previousHadith()"><i class="ni ni-bold-left"></i>{{languageService.isBosnian?'Prethodni hadis':'Previous hadith'}}</button>
+            <button class="btn d-flex" (click)="hadithService.nextHadith()">{{languageService.isBosnian?'Sljedeci hadis':'Next hadith'}}<i class="ni ni-bold-right"></i></button>
           </div>
 
          

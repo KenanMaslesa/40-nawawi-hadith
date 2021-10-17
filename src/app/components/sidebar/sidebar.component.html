@@ -32,7 +32,7 @@
       <!-- Navigation -->
       <ul class="navbar-nav">
         <!-- Search-->
-        <form class="mb-3 col-md-12">
+        <form class="mb-3 col-md-12" style="display: none;">
           <div class="input-group input-group-rounded input-group-merge">
             <input type="search" #searchBox (input)="search(searchBox.value)"
               class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
@@ -43,10 +43,10 @@
             </div>
           </div>
         </form>
-        <li *ngFor="let hadith of hadithService.searchData" (click)="hadithService.activeHadithId = hadith.id"
+        <li *ngFor="let hadith of hadithService.searchData" (click)="hadithService.activeHadithId = hadith.number"
           class="nav-item">
-          <a routerLinkActive="active" class="nav-link" [class.active]="hadithService.activeHadithId == hadith.id">
-            <i>{{hadith.id}}.</i>
+          <a routerLinkActive="active" class="nav-link" [class.active]="hadithService.activeHadithId == hadith.number">
+            <i>{{hadith.number}}.</i>
             <span *ngIf="languageService.isBosnian">{{hadith.bosnianTitle}}</span>
             <span *ngIf="languageService.isEnglish">{{hadith.englishTitle}}</span>
           </a>

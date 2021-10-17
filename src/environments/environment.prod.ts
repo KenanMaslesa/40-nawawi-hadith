@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  herokuAPI: 'https://nawawihadiths.herokuapp.com/api'
 };

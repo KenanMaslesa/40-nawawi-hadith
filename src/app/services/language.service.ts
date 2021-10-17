@@ -17,4 +17,8 @@ export class LanguageService {
     return this.currentLanguage == "english";
   }
 
+  changeCurrentLanguage(language){
+    this.currentLanguage = language;
+  }
+
 }

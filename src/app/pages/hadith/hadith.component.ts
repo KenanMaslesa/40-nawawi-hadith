@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HadithService } from 'src/app/services/hadith.service';
 import { LanguageService } from 'src/app/services/language.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-hadith',
@@ -15,6 +16,7 @@ export class HadithComponent implements OnInit {
   bosnian = true;
   activeHadith: any;
   trustedUrl: any;
+  audioHost = 'https://nawawihadiths.herokuapp.com';
 
   constructor(public hadithService: HadithService, public languageService: LanguageService) { }
 
